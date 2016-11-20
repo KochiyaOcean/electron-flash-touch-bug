@@ -4,16 +4,62 @@
   <meta charset="utf-8">
 </head>
 <body>
+  
   <div style="height: 500px; width: 500px; margin: 100px;">
-    <webview src="http://www.evolverdesign.com/clicktest/"
-             ondrop="event.preventDefault();"
+    <webview 
+             
              plugins
              style="height: 500px"
              disablewebsecurity>
     </webview>
   </div>
   <script>
-
+    var fname = 'file://' + __dirname + '/test.html';
+    document.getElementsByTagName('webview')[0].src = fname;
+    
+    window.onfocus = function(e) {
+      console.log('on outer.');
+    };
+    
+    window.onblur = function(e) {
+      console.log('off outer.');
+    };
+    
+    window.onmouseover = function(e) {
+      console.log('over outer.');
+    };
   </script>
 </body>
 </html>
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #test {
+      height:100px;width:300px;background:dodgerblue;display:block;
+    }
+    #test:hover,
+    #test:focus {
+      background:lightblue;
+    }
+  </style>
+</head>
+<body>
+  <a class="touch-block" id="test" style="">Hover me!</a>
+  <script>
+    window.onfocus = function(e) {
+      console.log('on me.');
+    };
+    
+    window.onblur = function(e) {
+      console.log('off me.');
+    };
+    
+    window.onmouseover = function(e) {
+      console.log('over me.');
+    };
+  </script>
+</body>
+</html>-->
